@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Página 1</title>
+		
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
+		<script>
+			//Link abaixo para relação de codigos de status
+			//https://developer.mozilla.org/en-US/docs/Web/HTTP/Status 
+
+
+			function recupera_request(link){
+				document.getElementById('conteudo').innerHTML = ""; //limpa enquanto tiver carregando
+				
+				if(!document.getElementById('loading')){ //verifica se ja existe o id de loading
+				let img = document.createElement('img'); //Usa o dom para criar um novo elemento na página
+				img.id = 'loading';
+				img.src = 'loading.gif';
+				img.width = '128';
+				img.height = '128';
+				img.className = 'rounded mx-auto d-block'
+
+			document.getElementById('conteudo').appendChild(img);
+				}
+
+			let ajax = new XMLHttpRequest(); //instância o objeto para chamadas assincronas
+			//console.log(ajax.readyState); // inicialização do estado, padrão 0
+			ajax.open('GET', link); //recupera usando o método get
+			//console.log(ajax.readyState); // mostra que o estado foi inicializado
+			// console.log(ajax);
+
+		   //logica para tratamento de uma solicitação
+		   ajax.onreadystatechange = function (){	//Realiza uma ação sempre que percebe uma mudança de status 0,1,2,3,4 (nada, envio, resposta de recbimento, processamento do servidro, finalização com a resposta)
+			//console.log(ajax.readyState); //mostra o status em tempo real
+
+			if(ajax.readyState == 4 && ajax.status == 200){ //ajax.status retorna o status da página
+				//document.getElementById('loading').remove(); //quando o status for 4 e der a resposta
+				// document.getElementById('conteudo').innerHTML = "Realizado com Sucesso!";
+				document.getElementById('conteudo').innerHTML = ajax.responseText;
+			}else if(ajax.readyState == 4 && ajax.status == 404){ //ajax.status retorna o status da página
+				//document.getElementById('loading').remove(); //quando o status for 4 e der a resposta
+				// document.getElementById('conteudo').innerHTML = "<font color='red'>Finalizado com erro, a página nao foi encontrada!</font>";
+				document.getElementById('conteudo').innerHTML = "<font color='red'>Finalizado com erro, a página nao foi encontrada!</font>";
+			}
+		   }
+
+
+
+
+			ajax.send();								//envia o pedido
+			}
+
+		</script>
+
+
+	</head>
+
+	<body>
+
+		<!-- Static navbar -->
+	    <nav class="navbar navbar-light bg-light mb-4">
+	      <div class="container">
+	        <div class="navbar-brand mb-0 h1">
+	        	<h3>Requisições síncronas e assíncronas</h3>
+	        </div>
+	      </div>
+	    </nav>
+
+
+	    <div class="container">
+
+	    	<div class="row mb-2">
+	    		<div class="col-md-4 center"></div>
+	    		<div class="col-md-4 center">
+	    			<a href="#" onclick="recupera_request('pagina_1_conteudo.php')" class="btn btn-primary">Página 1</a>
+	    			<a href="#" onclick="recupera_request('pagina_2_conteudo.html')" class="btn btn-primary">Página 2</a>
+	    			<a href="#" onclick="recupera_request('pagina_3_conteudo.html')" class="btn btn-primary">Página 3</a>
+	    		</div>
+	    		<div class="col-md-4 center"></div>
+	    	</div>
+	    	
+	    	<div class="row">
+		    	<div class="col-md-1"></div>
+
+		    	<div class="col-md-10" id="conteudo">
+
+		    	</div>
+		    		
+				<div class="col-md-1"></div>
+			</div>
+
+		</div>	
+	</body>
+</html>

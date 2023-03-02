@@ -1,0 +1,39 @@
+
+<html lang="pt_br">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <li value="Teste1">Teste 1</li>
+        <li value="Teste2">Teste 2</li>
+        <li value="Teste3">Teste 3</li>
+    </body>
+
+    <script>
+
+        function showList(empresa, ...clients) { //rest, recebe dados e adiciona ...array o restante
+            console.log(empresa);
+          clients.forEach(client => {
+            console.log(client, empresa);
+          });
+        }
+        
+        showList("Google", "André", "Pedro", "João");
+        
+        //o spread percorre cada elemento do array como se  tivesse num loop
+        // Arrays
+        const numeros = [1, 4, 9, 2, 3, 6, 20];
+        console.log(Math.max(...numeros)); // retorna 20
+        
+        // Transformar ArrayLike and Array
+        const items = document.querySelectorAll("li");
+        console.log(items);
+        // items.map() não existe, agora [...items]
+        // é uma nova array, com cada elemento de items.
+        console.log([...items].map(item => (item.innerText = "Teste"))) ;
+        
+        
+        </script>
+</html>
+
+
