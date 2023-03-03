@@ -1,32 +1,4 @@
-<html lang="pt-br">
 
-<head>
-    <meta charset="utf9">
-    <title>Filmes</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="xmltojson.js"></script>
-    <script>
-        function recuperaFilmes() {
-            let httpDados = new XMLHttpRequest(); //recebe os dados
-            httpDados.open('GET', 'filmes.xml'); //usa op método open para abrir o dado
-            httpDados.onreadystatechange = function() { //verifica a resposta do no processo de acesso ao servidor
-                if (httpDados.readyState == 4 && httpDados.status == 200) { //verifica o stado e o status do servidor
-                    let xmlDados = httpDados.responseText; //recebe a informação vinda do servidor
-                    console.log(xmlDados);
-                    let parser = new DOMParser(); //permite converter estilos de documentos 
-                    let domFilmes = parser.parseFromString(xmlDados, 'text/xml'); //converte o xml em um objeto dom 
-                    console.log(domFilmes);
-                    let filmeConvertidoJson = xmlToJson(domFilmes); //usa uma funçao que converte xml em json manipulavel por js usando o xmltojoson.js
-                    console.log(filmeConvertidoJson);
-
-                    //ok aqui //
-                    for(var i in filmeConvertidoJson['filmes']['filme']){
-
-                        let item = filmeConvertidoJson['filmes']['filme'][i]; //variavel auxiliar
-                        let divRow = document.createElement('div');
-                        divRow.className = 'row';
-                        let divCol = document.createElement('div');
-                        divCol.className = 'col';
 
                         let p1 = document.createElement('p');
                         p1.innerHTML = '<strong>Titulo: </strong>'+item['titulo']['#text'];
