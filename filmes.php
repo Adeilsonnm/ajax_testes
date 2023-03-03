@@ -19,7 +19,6 @@
                     let filmeConvertidoJson = xmlToJson(domFilmes); //usa uma funçao que converte xml em json manipulavel por js usando o xmltojoson.js
                     console.log(filmeConvertidoJson);
 
-                    //ok aqui //
                     for(var i in filmeConvertidoJson['filmes']['filme']){
 
                         let item = filmeConvertidoJson['filmes']['filme'][i]; //variavel auxiliar
