@@ -1,5 +1,5 @@
-<html lang="pt-br">
 
+<<<<<<< .merge_file_a07448
 <head>
     <meta charset="utf9">
     <title>Filmes</title>
@@ -19,17 +19,6 @@
                     let filmeConvertidoJson = xmlToJson(domFilmes); //usa uma funçao que converte xml em json manipulavel por js usando o xmltojoson.js
                     console.log(filmeConvertidoJson);
 
-                    // <div class="row">
-                    //     <div class="col">
-                    //         <p><strong>Título:</strong>Titulo</p>
-                    //         <p><strong>Resumo:</strong>Titulo</p>
-                    //         <p><strong>Gênero:</strong>Titulo</p>
-                    //         <p><strong>Elenco:</strong>Titulo</p>
-                    //         <p><strong>Data de Lançamento:</strong>Titulo</p>
-                    //         <hr>
-                    //     </div>
-                    // </div>
-                    //Se criará um lista de elementos filmes usando modede acima dem comentário
                     for(var i in filmeConvertidoJson['filmes']['filme']){
 
                         let item = filmeConvertidoJson['filmes']['filme'][i]; //variavel auxiliar
@@ -37,6 +26,8 @@
                         divRow.className = 'row';
                         let divCol = document.createElement('div');
                         divCol.className = 'col';
+=======
+>>>>>>> .merge_file_a12872
 
                         let p1 = document.createElement('p');
                         p1.innerHTML = '<strong>Titulo: </strong>'+item['titulo']['#text'];
