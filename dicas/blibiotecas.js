@@ -66,3 +66,6 @@ git checkout './filmes.php' //funciona como um ctrol-z , desfaz
 git log //movimentaçoes do projeto
 
 git branch -d 'branch' //aqui é possivel escluir um branch
+
+
+git push --set-upstream --force origin master //força um push 
